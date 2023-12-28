@@ -1,1 +1,2 @@
 print("koga")
+print("hiro")
