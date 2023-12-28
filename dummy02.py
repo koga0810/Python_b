@@ -1,0 +1,2 @@
+print("koga")
+higashi
