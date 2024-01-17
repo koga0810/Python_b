@@ -1,2 +1,2 @@
 print("koga")
-print("koga2")
+print("koga2koga")
