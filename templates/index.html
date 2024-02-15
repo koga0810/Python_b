@@ -1,0 +1,38 @@
+<!DOCTYPE html>font
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dogs&Cats Classifier</title>
+    <link rel="stylesheet" href="../static/stylesheet.css">
+</head>
+<body>
+    <header>
+        <div class="dark">
+            <img src="../static/images/cat_neon.png" alt="" class="head_cat">
+            <h2 class="neontext"> 犬・猫　AI　判　別</h2>
+            <img src="../static/images/dog_neon.png" alt="" class="head_dog">
+        </div>
+    </header>
+    <div class="container">
+        <div class="main">    
+        <div class="animated-text neontext">
+            <p>ファイル選択後に、判定開始を実行してください</p>
+        </div>
+            <form method="POST" enctype="multipart/form-data">
+                <label for="file_upload">
+                    ファイルを選択
+                    <input class="file_choose" type="file" name="file" id="file_upload">
+                </label>  
+                <input class="btn" value="判定開始" type="submit">
+            </form>
+            <div class="answer">{{answer}}</div>
+        </div>
+    </div>
+
+    <footer>
+        <small>&copy; 2024 </small>   
+    </footer>
+</body>
+</html>
