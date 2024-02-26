@@ -70,16 +70,38 @@ def upload_file():
         data = img / 255.0
 
         try:
-            result = model.predict(data)
+            result = model.predict(data)#detaから予測しresultに入れる
             probability = result[0, 0]
             #result= "{}%".format(math.floor(probability * 100))
             
-            if result > 0.5:
-                pred_answer = f"{probability * 100:.2f}%の確率で犬"
-            else:
-                pred_answer = f"{probability * 100:.2f}%の確率で猫"
+           
                 
-            pred_answer = f"これは{pred_answer} です"#猫か犬か判別する
+            if result > 0.9:#resultが0.9より大きい場合は犬になる
+                pred_answer = f"{probability * 100:.2f}%の確率で完全に犬"    
+            
+            elif result > 0.8:#resultが0.8より大きい場合は犬になる
+                pred_answer = f"{probability * 100:.2f}%の確率でほぼ犬"
+            
+            elif result > 0.5:#resultが0.5より大きい場合は犬になる
+                pred_answer = f"{probability * 100:.2f}%の確率でたぶん犬"
+                
+            elif result > 0.4:#resultが0.4より大きい場合は猫になる
+                cat_probability = 1-probability  # 猫の場合の確率を計算
+                pred_answer = f"{cat_probability * 100:.2f}%の確率でたぶん猫"    
+            
+            elif result > 0.3:#resultが0.3より大きい場合は猫になる
+                cat_probability = 1-probability  # 猫の場合の確率を計算
+                pred_answer = f"{cat_probability * 100:.2f}%の確率でほぼ猫"
+            
+            elif result > 0.1:#resultが0.1より大きい場合は猫になる
+                cat_probability = 1-probability  # 猫の場合の確率を計算
+                pred_answer = f"{cat_probability * 100:.2f}%の確率でほぼ確実に猫"
+                    
+            else:#それ以外
+                cat_probability = 1-probability  # 猫の場合の確率を計算
+                pred_answer = f"{cat_probability * 100:.2f}%の確率で完全に猫"
+                
+            pred_answer = f"これは{pred_answer} "#猫か犬か判別する
       
             
         except Exception as e:
@@ -91,7 +113,7 @@ def upload_file():
         except Exception as e:
             pass  # エラーが発生した場合は何もしない   
 
-        return render_template("index.html", answer=pred_answer)  
+        return render_template("result.html", answer=pred_answer)  
       
     return render_template("index.html",answer="判定受け付け待ち")
 
