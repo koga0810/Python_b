@@ -1,38 +1,40 @@
-<!DOCTYPE html>font
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dogs&Cats Classifier</title>
-    <link rel="stylesheet" href="../static/stylesheet.css">
+    <link rel="stylesheet" href="../static/css/stylesheet.css">
+    <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
-        <div class="dark">
-            <img src="../static/images/cat_neon.png" alt="" class="head_cat">
-            <h2 class="neontext"> 犬・猫　AI　判　別</h2>
-            <img src="../static/images/dog_neon.png" alt="" class="head_dog">
+        <div class="dark wrapper">
+            <img src="../static/images/cat_neon.png" alt="" class="head_cat block1">
+            <h2 class="neontext block2"> 犬・猫　AI　判　別</h2>
+            <img src="../static/images/dog_neon.png" alt="" class="head_dog block3">
         </div>
     </header>
-    <div class="container">
-        <div class="main">    
-        <div class="animated-text neontext">
-            <p>ファイル選択後に、判定開始を実行してください</p>
-        </div>
+    <main>
+        <div>    
+            <div class="animated-text">
+                <p>ファイル選択後に、判定開始を実行してください</p>
+            </div>
             <form method="POST" enctype="multipart/form-data">
                 <label for="file_upload">
                     ファイルを選択
-                    <input class="file_choose" type="file" name="file" id="file_upload">
+                    <input class="file_choose" type="file" name="file" id="file_upload" onchange="displayFilename()">
                 </label>  
-                <input class="btn" value="判定開始" type="submit">
+                <span id="filename_display"></span>
+                <input class="btn neontext" value="判定開始" type="submit">
             </form>
             <div class="answer">{{answer}}</div>
         </div>
-    </div>
-
+    </main>
     <footer>
-        <small>&copy; 2024 </small>   
+        <small>&copy; 2024 team_B</small>   
     </footer>
 </body>
 </html>
+

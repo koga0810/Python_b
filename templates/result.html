@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dogs&Cats Classifier</title>
+    <link rel="stylesheet" href="../static/css/result.css">
+    <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="answer">{{answer}}</div>
+    </header>
+    <main>
+        {% if filename %}
+            <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" class="uploaded_image">
+        {% else %}
+            <p class="no_image">No image uploaded.</p>
+        {% endif %}
+        <br><a href="{{ url_for('index') }}" class="go-back_link">トップ画面へ戻る</a>
+    </main>
+    <footer><small>&copy; 2024 team_B</small></footer>
+</body>
+</html>
