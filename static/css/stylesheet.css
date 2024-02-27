@@ -1,0 +1,202 @@
+@charset "utf-8";
+
+/* reset
+--------------------------------------------------*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, select, input, textarea, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	border: 0;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; }
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*--------------------------------*/
+
+.wrapper {
+	max-width: 920px;
+	margin: 0 auto;
+	padding: 0 10px 0 10px;   
+}
+
+/*----------------header----------------*/
+
+body {
+    background-image: url(../images/background.png);
+    background-size: cover; 
+}
+
+header{
+    background-color: black;
+}
+.dark{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.neontext {
+    animation: flicker 1.5s infinite alternate;
+    color: #CCFF33;
+    font-size: 40px;
+    padding: 30px;
+}
+.head_dog {
+    width: auto;
+    height: 90px;
+    opacity: 0.6;
+}
+.head_cat {
+    width: auto;
+    height: 100px;
+    opacity: 0.6;
+}
+.images{
+    text-align: center;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+/*----------------main----------------*/
+
+main {
+    height: 500px;
+    width: auto;
+    padding: 30px 0;
+}
+
+.animated-text p {
+    font-size:30px;
+    color:#CCFF33;
+    text-align: center;
+}
+
+label{
+    color:#CCFF33;
+    font-size:30px;
+    margin-right:20px;
+    opacity:0.9;
+    text-align: center;
+}
+
+label:hover{
+    opacity:1;
+    cursor: pointer;
+}
+.file_choose {
+    display: none; /* ファイル選択ボタンを非表示 */
+}
+.btn {
+    margin-top: 10px;
+}
+.file_label {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+.answer {
+    color: rgb(65, 64, 63);
+    margin: 141px 0px 0px 0px;
+    text-align: center;
+    font-size:30px;
+    background-color: rgb(172, 170, 169);
+    opacity: 0.9;
+}
+
+form {
+    text-align: center;
+}
+
+.btn{
+    font-size:20px;
+    padding:15px 20px;
+    color:rgb(89, 107, 107);
+    background-color:#abbfcf;
+    border-radius: 6px;
+    opacity:0.8;
+}
+
+.btn:hover{
+    opacity:1;
+    cursor: pointer;
+}
+
+.file_choose{
+    display:none;
+    font-size:15px;
+    padding:0px 0px;
+}
+
+/*----------------footer----------------*/
+footer{
+    color: #fff;
+    text-align: center;
+}
+
+
+/* レスポンシブデザインのスタイル */
+/* タブレットサイズ以下 */
+@media (max-width: 768px) {
+.neontext {
+    font-size: 25px;
+    padding: 10px;
+    }
+}
+.head_dog {
+    height: 60px;
+}
+.head_cat {
+    height: 70px;
+}
+.animated-text p ,label{
+    font-size:20px;
+
+}
+/* スマートフォンサイズ以下 */
+@media (max-width: 480px) {
+.dark {
+    display: flex;
+    flex-direction: column;
+}
+
+.block1{
+    order: 2;
+}
+.block2{
+    order: 1;
+}
+.block3{
+    order: 3;
+}
+.animated-text p ,label{
+    font-size:15px;
+
+}
+}
