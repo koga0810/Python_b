@@ -8,18 +8,41 @@
     <link rel="stylesheet" href="../static/css/result.css">
     <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header>
         <div class="answer">{{answer}}</div>
     </header>
     <main>
+        <div class="wrapper">
         {% if filename %}
             <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" class="uploaded_image">
         {% else %}
             <p class="no_image">No image uploaded.</p>
         {% endif %}
         <br><a href="{{ url_for('index') }}" class="go-back_link">トップ画面へ戻る</a>
+        </div>
     </main>
     <footer><small>&copy; 2024 team_B</small></footer>
+    <!-- 追加したいクラッカースクリプト -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
+    <script>
+        // confettiエフェクトを実行する関数
+        function runConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+            });
+        }
+
+        window.onload = function() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(runConfetti, i * 2000); 
+            }
+        };
+    </script>
 </body>
 </html>
+
+
