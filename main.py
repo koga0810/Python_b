@@ -11,7 +11,7 @@ image_size = 150 # 画像のサイズを150にする
 
 # UPLOAD_FOLDER = "C:\\Users\\6d09\\Desktop\\dog or cat\\uploads" # アップロードされた画像の保存
 # UPLOAD_FOLDER = "C:\\work\\Classifier\\static\\uploads"
-UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'static', 'uploads')
+UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'static', 'uploads')#アップロードされた画像を保存するパスを設定
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif']) # アップロードを許可する拡張子の指定
 
 app = Flask(__name__) # flaskのオブジェクト作成
@@ -39,7 +39,6 @@ def index():
     return redirect(url_for('upload_file'))
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST': # httpのメソッドで画像を送信されたときの動作
@@ -53,6 +52,10 @@ def upload_file():
         if file.filename == '': # ファイル名がない場合はファイル名がありませんの表記
             ans = 'ファイル名がありません'
             return render_template("index.html",answer=ans)
+        
+        if not allowed_file(file.filename):#'png', 'jpg', 'jpeg', 'gif'以外のファイルが入力された場合の表記
+            ans = '許可されていないファイル形式です'
+            return render_template("index.html", answer=ans)
         
          # ファイルパスを構築
         filename = secure_filename(file.filename)
@@ -69,7 +72,14 @@ def upload_file():
         try:
             file.save(file_path)
         except FileNotFoundError:
-            print(f"Error: Directory not found - {app.config['UPLOAD_FOLDER']}")
+            print(f"エラー：ディレクトリが見つかりません - {app.config['UPLOAD_FOLDER']}")
+        except Exception as e:# ファイル保存中にエラーが発生した場合にファイルを削除する
+            try:
+                os.remove(file_path)
+                print(f"アップロードされたファイルを削除しました: {file_path}")
+            except Exception as e2:
+                print(f"アップロードされたファイルの削除中にエラーが発生しました: {e2}")
+            print(f"画像ファイル保存中にエラーが発生しました: {e}")
 
         img = image.load_img(file_path, target_size=(image_size, image_size)) # 画像のURL、縦横のサイズ
         img = image.img_to_array(img)
@@ -79,7 +89,6 @@ def upload_file():
         try:
             result = model.predict(data) # detaから予測しresultに入れる
             probability = result[0, 0]
-            # result= "{}%".format(math.floor(probability * 100))
             
             if result > 0.9:#resultが0.9より大きい場合は犬になる
                 #確率をパーセンテージで表示しintで小数点以下を切り捨て
