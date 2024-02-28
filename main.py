@@ -81,32 +81,33 @@ def upload_file():
             probability = result[0, 0]
             # result= "{}%".format(math.floor(probability * 100))
             
-           
+            if result > 0.9:#resultが0.9より大きい場合は犬になる
+                #確率をパーセンテージで表示しintで小数点以下を切り捨て
+                 pred_answer = f"{int(probability * 100)}%の確率で完全に犬です"
+                     
+            elif result > 0.8:#resultが0.8より大きい場合は犬になる
+                  pred_answer = f"{int(probability * 100)}%の確率でほぼ犬です"
+                   
+            elif result > 0.5:#resultが0.5より大きい場合は犬になる
+                pred_answer = f"{int(cat_probability * 100)}%の確率でたぶん犬です"
                 
-            if result > 0.9: # resultが0.9より大きい場合は犬になる
-                pred_answer = f"{probability * 100:.2f}%の確率で完全に犬"    
-            
-            elif result > 0.8: # resultが0.8より大きい場合は犬になる
-                pred_answer = f"{probability * 100:.2f}%の確率でほぼ犬"
-            
-            elif result > 0.5: # resultが0.5より大きい場合は犬になる
-                pred_answer = f"{probability * 100:.2f}%の確率でたぶん犬"
+            elif result > 0.4:#resultが0.4より大きい場合は猫になる
+                cat_probability = 1-probability  # 猫の場合の確率を計算
+                pred_answer = f"{int(cat_probability * 100)}%の確率でたぶん猫です" 
+                   
+            elif result > 0.3:#resultが0.3より大きい場合は猫になる
+                cat_probability = 1-probability  # 猫の場合の確率を計算
+                pred_answer = f"{int(cat_probability * 100)}%の確率でほぼ猫です"
                 
-            elif result > 0.4: # resultが0.4より大きい場合は猫になる
-                cat_probability = 1-probability # 猫の場合の確率を計算
-                pred_answer = f"{cat_probability * 100:.2f}%の確率でたぶん猫"    
-            
-            elif result > 0.3: # resultが0.3より大きい場合は猫になる
-                cat_probability = 1-probability # 猫の場合の確率を計算
-                pred_answer = f"{cat_probability * 100:.2f}%の確率でほぼ猫"
-            
-            elif result > 0.1: # resultが0.1より大きい場合は猫になる
-                cat_probability = 1-probability # 猫の場合の確率を計算
-                pred_answer = f"{cat_probability * 100:.2f}%の確率でほぼ確実に猫"
-                    
-            else: # それ以外
-                cat_probability = 1-probability # 猫の場合の確率を計算
-                pred_answer = f"{cat_probability * 100:.2f}%の確率で完全に猫"
+            elif result > 0.1:#resultが0.1より大きい場合は猫になる
+                cat_probability = 1-probability  # 猫の場合の確率を計算
+                pred_answer = f"{int(cat_probability * 100)}%の確率でほぼ確実に猫です"
+                
+            else:#それ以外
+                cat_probability = 1-probability  # 猫の場合の確率を計算
+                pred_answer = f"{int(cat_probability * 100)}%の確率で完全に猫です"
+                
+        
                 
             pred_answer = f"これは{pred_answer} " # 猫か犬か判別する
       
