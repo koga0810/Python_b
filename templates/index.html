@@ -7,6 +7,23 @@
     <title>Dogs&Cats Classifier</title>
     <link rel="stylesheet" href="../static/css/stylesheet.css">
     <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
+
+    <script>
+        // ファイル名を表示する関数
+        function displayFilename() {
+            // ファイル選択要素を取得
+            var input = document.getElementById('file_upload');
+            // 選択されたファイル名を表示する要素を取得
+            var filenameDisplay = document.getElementById('filename_display');
+            // ファイルが選択された場合、ファイル名を表示
+            if (input.files.length > 0) {
+                filenameDisplay.textContent = input.files[0].name;
+            } else {
+                filenameDisplay.textContent = ""; // ファイルが選択されていない場合は表示をクリア
+            }
+        }
+    </script>
+
 </head>
 <body>
     <header>
@@ -33,8 +50,7 @@
         </div>
     </main>
     <footer>
-        <small>&copy; 2024 team_B</small>   
+        <small>&copy; 2024 team_B</small>
     </footer>
 </body>
 </html>
-
