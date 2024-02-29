@@ -5,6 +5,7 @@ from keras.models import load_model
 from keras.preprocessing import image
 import numpy as np
 import threading
+import pygame
 
 classes = ["猫", "犬"]
 image_size = 150 # 画像のサイズを150にする
@@ -32,7 +33,15 @@ except Exception as e:
 # UPLOAD_FOLDERが存在しない場合は作成
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER']) 
+ 
+########ここからBGM追加#########    
+pygame.init()
 
+def play_music():
+    pygame.mixer.music.load('static/bgm/bgm.mp3')  # BGMファイルのパスを指定
+    pygame.mixer.music.play()
+
+####################
 
 @app.route('/index')
 def index():
@@ -169,4 +178,7 @@ def delete_image_after_delay(filename):
 ########################追加ここまで###############################
 
 if __name__ == "__main__":
+    #############
+    play_music()  # アプリケーション起動時に音楽を再生
+    ############
     app.run()   
