@@ -16,7 +16,7 @@
     <main>
         <div class="wrapper">
         {% if filename %}
-            <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" class="uploaded_image">
+            <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" class="uploaded_image fadeIn">
         {% else %}
             <p class="no_image">No image uploaded.</p>
         {% endif %}
