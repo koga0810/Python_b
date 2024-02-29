@@ -35,11 +35,11 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER']) 
  
 ########ここからBGM追加#########    
-pygame.init()
+pygame.init()#pygameの初期化
 
 def play_music():
-    pygame.mixer.music.load('static/bgm/bgm.mp3')  # BGMファイルのパスを指定
-    pygame.mixer.music.play()
+    pygame.mixer.music.load('static/bgm/bgm.mp3')  # BGMファイルのパスを指定してロードする
+    pygame.mixer.music.play(-1)#BGMを再生（ループ）
 
 ####################
 
