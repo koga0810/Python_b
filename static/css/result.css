@@ -52,22 +52,31 @@ body {
 
 /*----------------main----------------*/
 main {
-    width: auto;
-    /* 枠の幅を固定 */
+    width: auto;  /* 枠の幅を固定 */
 }
-
 .uploaded_image {
-    width: 300px;
-    /* 幅を固定 */
-    height: 300px;
-    /* 高さを固定 */
-    object-fit: cover;
-    /* 画像を枠内にフィットさせる */
-    border-radius: 50px;
-    /* 画像の角を丸くする */
-    margin: 30px 0;
-    /* 上下の余白 */
+    width: 300px;  /* 幅を固定 */
+    height: 300px; /* 高さを固定 */
+    object-fit: cover; /* 画像を枠内にフィットさせる */
+    border-radius: 50px; /* 画像の角を丸くする */
+    margin: 30px 0; /* 上下の余白 */
 }
+.fadeIn{
+    animation-name:fadeInAnime;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    opacity:0;
+    }
+    
+    @keyframes fadeInAnime{
+      from {
+        opacity: 0;
+      }
+    
+      to {
+        opacity: 1;
+      }
+    }
 
 /*----------------footer----------------*/
 footer {
