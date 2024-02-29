@@ -1,0 +1,86 @@
+.right {
+    width: 50%; /* 初期は50%幅に設定 */
+    text-align: center;
+}
+
+/* スマートフォンや狭い画面サイズの場合のスタイル */
+@media (max-width: 767px) {
+    .right {
+        width: 10%; /* 画面幅が767px以下の場合、right要素を100%幅に設定 */
+    }
+}
+
+.left {
+    width: 100%; /* 左側の要素を100%幅に設定 */
+    background-image: url(../ep_memo.css/haikei3.jpg);
+    background-repeat: no-repeat;
+    background-size: contain; /* 画像を要素内に収める */
+    background-position: center; /* 画像を中央に配置 */
+}
+
+@media (min-width: 768px) {
+    .left {
+        width: 50vw; /* 画面幅が768px以上の場合に左側の要素を50%幅に設定 */
+    }
+}
+
+.right > p {
+    padding: 3%;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+body {
+    font-family: 'Kiwi Maru', serif;
+    display: flex;
+    height: calc(100vh + 150px);
+}
+
+p {
+    display: block;
+    font-size: 14px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: left;
+}
+
+div {
+    display: block;
+}
+
+.dc {
+    font-size: 8px;
+    display: inline-block; /* インラインブロック要素として表示 */
+}
+
+/* ネオン風の下線を持つ要素のスタイル */
+.neon-underline {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #000; /* テキストの色を黒に設定 */
+}
+
+.neon-underline:before {
+    content: ''; /* 疑似要素のコンテンツを空にする */
+    position: absolute;
+    left: -7px;
+    bottom: -2px; /* 下線の位置を微調整 */
+    width: 120%;
+    height: 4px; /* 下線の太さ */
+    background: linear-gradient(90deg, #00eaff, #11ff00, #ffff00, #ff00ea, #ff0000); /* ネオン風のグラデーション */
+    background-size: 200% 200%;
+    animation: neon 1.5s linear infinite alternate; /* ネオン風のアニメーション */
+}
+
+/* ネオン風のアニメーション */
+@keyframes neon {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
